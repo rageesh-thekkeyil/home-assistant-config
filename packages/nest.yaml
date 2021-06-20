@@ -1,0 +1,11 @@
+
+# All nest integrations have been moved as i moved to the package structure
+# All nest automation for nest can be defined here or in node-red setup
+
+nest:
+  client_id: !secret nest_client_id
+  client_secret: !secret nest_client_secret
+  # "Project ID" in the Device Access Console
+  project_id: !secret nest_proj_id
+  # Provide the full path exactly as shown under "Subscription name" in Google Cloud Console
+  subscriber_id: projects/weighty-clone-207121/subscriptions/thekkeyil-nest-hass

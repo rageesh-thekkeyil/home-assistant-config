@@ -1,0 +1,172 @@
+views:
+  - title: Home
+    badges: []
+    cards:
+      - type: thermostat
+        entity: climate.thermostat
+        name: Lower Level Thermostat
+      - type: thermostat
+        entity: climate.thermostat_2
+        name: Upper Level Thermostat
+      - type: media-control
+        entity: media_player.living_room_speaker
+      - type: media-control
+        entity: media_player.roku_5s56ax136082
+      - type: media-control
+        entity: media_player.samsung_un65ks8000
+      - type: button
+        tap_action:
+          action: toggle
+        entity: switch.smart_plug
+        name: Kitchen water kettle
+        show_state: true
+        icon_height: 4px
+      - type: entity
+        entity: camera.front_door
+        name: Door Bell
+      - type: entities
+        entities:
+          - entity: binary_sensor.skybell_front_door_button
+          - entity: binary_sensor.skybell_front_door_motion
+          - entity: sensor.skybell_front_door_chime_level
+        title: Front Door Bell
+        state_color: true
+      - type: picture-entity
+        entity: switch.skybell_front_door_do_not_disturb
+        image: 'https://demo.home-assistant.io/stub_config/bedroom.png'
+        camera_image: camera.front_door
+        name: Front Door view
+      - type: entities
+        entities:
+          - entity: sensor.dcp_j140w_status
+          - entity: sensor.dcp_j140w_black_toner_remaining
+          - entity: sensor.dcp_j140w_cyan_toner_remaining
+          - entity: sensor.dcp_j140w_magenta_toner_remaining
+          - entity: sensor.dcp_j140w_yellow_toner_remaining
+          - entity: sensor.dcp_j140w_page_counter
+        title: Printer
+        state_color: true
+      - type: map
+        entities:
+          - entity: person.lakshmi
+          - entity: person.rageesh
+        hours_to_show: 0
+        title: 'Location '
+      - type: glance
+        entities:
+          - entity: media_player.samsung_un65ks8000
+            name: samsung tv
+          - entity: media_player.roku_5s56ax136082
+            name: roku stick
+          - entity: media_player.chromerex
+            name: chrome stick
+          - entity: switch.smart_plug
+            name: water kettle
+        state_color: true
+        show_name: true
+      - type: weather-forecast
+        entity: weather.thekkeyils
+        secondary_info_attribute: wind_speed
+      - type: entities
+        entities:
+          - entity: person.lakshmi
+          - entity: person.rageesh
+      - type: entities
+        entities:
+          - cover.garage_door_tesla
+      - type: glance
+        entities:
+          - entity: sensor.ipad_2_battery_state
+            name: Rageesh iPad
+          - entity: sensor.iphone_battery_state_2
+            name: Work Phone
+          - entity: sensor.iphone_battery_state_3
+            name: Rageesh Phone
+          - entity: sensor.rageeshs_apple_watch_battery_state
+            name: Watch- Rex
+          - entity: sensor.lakshmi_battery_level
+        title: Battery Status
+  - title: temperature
+    path: temperature
+    panel: false
+    badges:
+      - entity: climate.thermostat
+      - entity: climate.thermostat_2
+    cards:
+      - type: thermostat
+        entity: climate.thermostat
+        name: Lower Level Nest
+      - type: thermostat
+        entity: climate.thermostat_2
+        name: Upper Level Nest
+      - type: gauge
+        entity: sensor.thermostat_humidity
+        min: 0
+        max: 100
+        name: Lowerlevel Humidity
+      - type: gauge
+        entity: sensor.thermostat_temperature_2
+        min: 0
+        max: 100
+        name: Upperlevel Humidity
+      - type: history-graph
+        entities:
+          - entity: climate.thermostat
+        hours_to_show: 24
+        refresh_interval: 0
+        title: Lower level
+      - type: history-graph
+        entities:
+          - entity: climate.thermostat_2
+        hours_to_show: 24
+        refresh_interval: 0
+        title: Upper level
+  - title: Lakshmi
+    path: lakshmi
+    badges: []
+    cards:
+      - type: entities
+        entities:
+          - entity: device_tracker.lakshmi
+          - entity: sensor.lakshmi_sim_1
+          - entity: sensor.lakshmi_connection_type
+          - entity: sensor.lakshmi_ssid
+          - entity: sensor.lakshmi_battery_level
+          - entity: sensor.lakshmi_storage
+        title: Lakshmi iPhone
+      - type: entities
+        entities:
+          - entity: sensor.lakshmi_activity
+          - entity: sensor.lakshmi_average_active_pace
+          - entity: sensor.lakshmi_distance
+          - entity: sensor.lakshmi_floors_ascended
+          - entity: sensor.lakshmi_floors_descended
+          - entity: sensor.lakshmi_steps
+        title: Lakshmi Fitness
+      - type: map
+        entities:
+          - entity: person.lakshmi
+        hours_to_show: 0
+        dark_mode: true
+        title: Lakshmi location tracker
+        default_zoom: -6
+      - type: shopping-list
+        title: Grocery list
+  - title: Kitchen
+    path: kitchen
+    badges: []
+    cards:
+      - type: entities
+        entities:
+          - entity: sensor.wallpanel_light_level
+          - entity: sensor.wallpanel_battery_level
+          - entity: binary_sensor.wallpanel_motion
+      - type: button
+        tap_action:
+          action: toggle
+        entity: binary_sensor.wallpanel_motion
+      - type: picture-entity
+        entity: camera.wallpanel_camera
+        image: 'https://demo.home-assistant.io/stub_config/bedroom.png'
+        camera_image: camera.wallpanel_camera
+title: Thekkeyils

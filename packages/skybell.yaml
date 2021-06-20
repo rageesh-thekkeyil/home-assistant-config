@@ -1,0 +1,32 @@
+# Sky bell door bell entry
+skybell:
+  username: !secret skybell_usr_name
+  password: !secret skybell_password
+
+# 
+binary_sensor:
+  - platform: skybell
+    monitored_conditions:
+      - button
+      - motion
+
+camera:
+  - platform: skybell
+    monitored_conditions:
+    - avatar
+    - activity
+    activity_name: "Last Activity"
+
+
+sensor:
+  - platform: skybell
+    monitored_conditions:
+      - chime_level
+
+
+# Example configuration.yaml entry
+switch:
+  - platform: skybell
+    monitored_conditions:
+      - do_not_disturb
+      - motion_sensor

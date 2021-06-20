@@ -1,0 +1,23 @@
+
+homeassistant:
+  #customize: !include customize.yaml
+  packages: !include_dir_named packages
+
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+cloud:
+
+lovelace:
+  mode: yaml
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+
+
+
+

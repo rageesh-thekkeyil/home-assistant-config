@@ -1,0 +1,186 @@
+- id: '1609080652815'
+  alias: garage door closing
+  description: Close the garage door if it is opened in the night
+  trigger:
+  - platform: device
+    device_id: 5e9a1a195ff2b3988e462c24d439a712
+    domain: cover
+    entity_id: cover.garage_door_tesla
+    type: opened
+  - platform: state
+    entity_id: cover.garage_door_tesla
+    to: open
+    for: 00:30:00
+  condition:
+  - condition: time
+    after: '22:00:00'
+    before: 06:00:00
+  action:
+  - device_id: 5e9a1a195ff2b3988e462c24d439a712
+    domain: cover
+    entity_id: cover.garage_door_tesla
+    type: close
+  mode: single
+- id: '1609099650001'
+  alias: Alert if the garage is open for more than 30 minutes
+  description: Send an iphone notification if the garage is left open for more than
+    30 mins
+  trigger:
+  - platform: state
+    entity_id: cover.garage_door_tesla
+    to: open
+    for: 00:30:00
+  condition: []
+  action:
+  - service: notify.mobile_app_iphone
+    data:
+      message: Garage door tesla is opened for more than 30 minutes
+      title: Garage door tesla open
+  mode: single
+- id: '1609100060578'
+  alias: Open garage door when Rageesh is approaching home
+  description: Open garage door when rageesh is approaching home
+  trigger:
+  - platform: device
+    device_id: debf60c27e85d09610464b8d5d5169cc
+    domain: device_tracker
+    entity_id: device_tracker.iphone
+    type: enters
+    zone: zone.home
+  condition:
+  - condition: device
+    device_id: 5e9a1a195ff2b3988e462c24d439a712
+    domain: cover
+    entity_id: cover.garage_door_tesla
+    type: is_closed
+  action:
+  - device_id: 5e9a1a195ff2b3988e462c24d439a712
+    domain: cover
+    entity_id: cover.garage_door_tesla
+    type: open
+  mode: single
+- id: '1624218629187'
+  alias: Kitchen sink water leak
+  description: ''
+  trigger:
+  - type: moist
+    platform: device
+    device_id: 59374b15db2af5f34573365897292a5d
+    entity_id: binary_sensor.lumi_lumi_sensor_wleak_aq1_c734b206_ias_zone
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 10
+      milliseconds: 0
+  condition: []
+  action:
+  - service: notify.mobile_app_iphone
+    data:
+      message: Kitchen Sink water leak
+      title: Kitchen Sink water leak
+  - service: notify.mobile_app_lakshmi
+    data:
+      message: Kitchen Sink water leak
+      title: Kitchen Sink water leak
+  mode: single
+- id: '1624218936056'
+  alias: New Automation
+  description: ''
+  trigger:
+  - type: moist
+    platform: device
+    device_id: 1f939df83d34a210280650238427d893
+    entity_id: binary_sensor.lumi_lumi_sensor_wleak_aq1_2d4bb606_ias_zone
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 10
+      milliseconds: 0
+  condition: []
+  action:
+  - service: notify.mobile_app_iphone
+    data:
+      message: Water leak detected in main level half bath,  check immediately
+      title: Water leak detected in main level half bath
+  - service: notify.mobile_app_lakshmi
+    data:
+      message: Water leak detected in main level half bath,  check immediately
+      title: Water leak detected in main level half bath
+  mode: single
+- id: '1624219091613'
+  alias: water leak guest bathroom
+  description: water leak guest bathroom
+  trigger:
+  - type: moist
+    platform: device
+    device_id: 916b2074f3b446fa8728ce8eaf860772
+    entity_id: binary_sensor.lumi_lumi_sensor_wleak_aq1_b8c3b706_ias_zone
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 10
+      milliseconds: 0
+  condition: []
+  action:
+  - service: notify.mobile_app_iphone
+    data:
+      message: Water leak detected in guest bath room. Please check
+      title: Water leak detected in guest bath room
+  - service: notify.mobile_app_lakshmi
+    data:
+      message: Water leak detected in guest bath room. Please check
+      title: Water leak detected in guest bath room
+  mode: single
+- id: '1624219092993'
+  alias: water leak guest bathroom
+  description: water leak guest bathroom
+  trigger:
+  - type: moist
+    platform: device
+    device_id: 916b2074f3b446fa8728ce8eaf860772
+    entity_id: binary_sensor.lumi_lumi_sensor_wleak_aq1_b8c3b706_ias_zone
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 10
+      milliseconds: 0
+  condition: []
+  action:
+  - service: notify.mobile_app_iphone
+    data:
+      message: Water leak detected in guest bath room. Please check
+      title: Water leak detected in guest bath room
+  - service: notify.mobile_app_lakshmi
+    data:
+      message: Water leak detected in guest bath room. Please check
+      title: Water leak detected in guest bath room
+  mode: single
+- id: '1624219240819'
+  alias: water leak  washer dryer room
+  description: water leak  washer dryer room
+  trigger:
+  - type: moist
+    platform: device
+    device_id: 92162a049637163c2241e0494a70aa8c
+    entity_id: binary_sensor.lumi_lumi_sensor_wleak_aq1_ias_zone
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 10
+      milliseconds: 0
+  condition: []
+  action:
+  - service: notify.mobile_app_iphone
+    data:
+      message: Water leak detected in washer dryer room, please check
+      title: Water leak detected in washer dryer room
+  - service: notify.mobile_app_lakshmi
+    data:
+      message: Water leak detected in washer dryer room, please check
+      title: Water leak detected in washer dryer room
+  mode: single

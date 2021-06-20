@@ -1,0 +1,57 @@
+sensor:
+  - platform: mqtt
+    state_topic: "wallpanel/mywallpanel/sensor/battery"
+    name: "WallPanel Battery Level"
+    unit_of_measurement: "%"
+    device_class: battery
+    value_template: "{{ value_json.value }}"
+    
+  - platform: mqtt
+    state_topic: "wallpanel/mywallpanel/sensor/temperature"
+    name: "WallPanel Temperature"
+    unit_of_measurement: "°C"
+    device_class: temperature
+    value_template: "{{ value_json.value }}"
+
+  - platform: mqtt
+    state_topic: "wallpanel/mywallpanel/sensor/light"
+    name: "WallPanel Light Level"
+    unit_of_measurement: "lx"
+    device_class: illuminance
+    value_template: "{{ value_json.value }}"
+    
+  - platform: mqtt
+    state_topic: "wallpanel/mywallpanel/sensor/magneticField"
+    name: "WallPanel Magnetic Field"
+    unit_of_measurement: "uT"
+    value_template: ''
+
+  - platform: mqtt
+    state_topic: "wallpanel/mywallpanel/sensor/pressure"
+    name: "WallPanel Pressure"
+    unit_of_measurement: "hPa"
+    value_template: ''
+
+binary_sensor:
+  - platform: mqtt
+    state_topic: "wallpanel/mywallpanel/sensor/motion"
+    name: "wallpanel Motion"
+    payload_on: '{"value":true}'
+    payload_off: '{"value":false}'
+    device_class: motion
+  - platform: mqtt
+    state_topic: "wallpanel/mywallpanel/sensor/face"
+    name: "Face Detected"
+    payload_on: '{"value":true}'
+    payload_off: '{"value":false}'
+    device_class: motion 
+  - platform: mqtt
+    state_topic: "wallpanel/mywallpanel/sensor/battery"
+    name: "WallPanel charging state"
+    device_class: battery_charging
+    value_template: "{{ value_json.charging }}"
+
+camera:
+  - platform: mjpeg
+    mjpeg_url: http://192.168.1.121:2971/camera/stream
+    name: WallPanel Camera
